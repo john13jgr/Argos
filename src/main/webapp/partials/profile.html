@@ -1,0 +1,70 @@
+<div ng-controller="MyProfileCtrl" ng-init="init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="messages" class="alert alert-{{alertStatus}}" ng-show="messages">
+                <span ng-bind="messages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+            </div>
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Mi Perfil</h3>
+            <form name="profileForm" novalidate role="form">
+                <div class="form-group" ng-class="{'has-warning': profile.displayName != initialProfile.displayName}">
+                    <label for="displayName">Nombre </label>
+                    <span class="label label-warning"
+                          ng-show="profile.displayName != initialProfile.displayName"> Modificado</span>
+                    <input id="displayName" type="text" name="displayName" ng-model="profile.displayName"
+                           class="form-control"/>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-warning': profile.cedula != initialProfile.cedula}">
+                    <label for="cedula">Cédula </label>
+                    <span class="label label-warning"
+                          ng-show="profile.cedula != initialProfile.cedula"> Modificado</span>
+                    <input id="cedula" type="text" name="cedula" ng-model="profile.cedula"
+                           class="form-control"/>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-warning': profile.telefono != initialProfile.telefono}">
+                    <label for="telefono">Teléfono </label>
+                    <span class="label label-warning"
+                          ng-show="profile.telefono != initialProfile.telefono"> Modificado</span>
+                    <input id="telefono" type="text" name="telefono" ng-model="profile.telefono"
+                           class="form-control"/>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-warning': profile.celular != initialProfile.celular}">
+                    <label for="celular">Celular </label>
+                    <span class="label label-warning"
+                          ng-show="profile.celular != initialProfile.celular"> Modificado</span>
+                    <input id="celular" type="text" name="celular" ng-model="profile.celular"
+                           class="form-control"/>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-warning': profile.direccion != initialProfile.direccion}">
+                    <label for="direccion">Dirección </label>
+                    <span class="label label-warning"
+                          ng-show="profile.direccion != initialProfile.direccion"> Modificado</span>
+                    <input id="direccion" type="text" name="direccion" ng-model="profile.direccion"
+                           class="form-control"/>
+                </div>
+                
+                <div class="form-group" ng-class="{'has-warning': profile.sexo != initialProfile.sexo}">
+                    <label for="sexo">Sexo</label>
+                    <span class="label label-warning"
+                          ng-show="profile.sexo != initialProfile.sexo"> Modificado</span>
+                    <select id="sexo" ng-model="profile.sexo" name="sexo" ng-options="size for size in sexo"
+                            class="form-control">
+                    </select>
+                </div>
+                <button ng-click="saveProfile(profileForm)" class="btn btn-primary"
+                        ng-disabled="loading">Actualizar perfil
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
